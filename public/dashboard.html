@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Quiz Dashboard</h1>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+    <h2>Choose a Quiz</h2>
+    <div class="quiz-card" onclick="startQuiz('JavaScript Basics')">
+      <h3>JavaScript Basics</h3>
+      <p>2 Questions</p>
+    </div>
+    <div class="quiz-card" onclick="startQuiz('HTML & CSS')">
+      <h3>HTML & CSS</h3>
+      <p>2 Questions</p>
+    </div>
+  </div>
+  <script>
+    if (localStorage.getItem('loggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+
+    function startQuiz(quizName) {
+      window.location.href = `quiz.html?name=${encodeURIComponent(quizName)}`;
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
